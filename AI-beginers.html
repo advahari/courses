@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" data-theme="light" style=""><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סילבוס קורס AI - חדשנות ויצירה</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&amp;family=Rubik:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/all.min.css">
+    <style>
+      :root {
+        --bg-dark: #0f172a;
+        --card-bg: rgba(30, 41, 59, 0.7);
+        --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        --accent-cyan: #06b6d4;
+        --accent-purple: #a855f7;
+        --accent-pink: #ec4899;
+        --text-main: #f8fafc;
+        --text-secondary: #94a3b8;
+        --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Rubik', sans-serif;
+        background-color: var(--bg-dark);
+        background-image:
+          radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 20%),
+          radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 20%);
+        color: var(--text-main);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        width: 100%;
+        position: relative;
+      }
+
+      /* Header Styling */
+      header {
+        text-align: center;
+        margin-bottom: 60px;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      h1 {
+        font-family: 'Heebo', sans-serif;
+        font-weight: 900;
+        font-size: 3.5rem;
+        margin-bottom: 15px;
+        background: linear-gradient(to right, #60a5fa, #c084fc, #f472b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        letter-spacing: -1px;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        border-bottom: 2px solid transparent;
+        border-image: var(--primary-gradient) 1;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+
+      /* Grid Layout */
+      .syllabus-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      /* Card Styling */
+      .card {
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: var(--glass-border);
+        border-radius: 20px;
+        padding: 30px;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        animation: fadeInUp 0.8s ease-out backwards;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 15px 30px rgba(0, 0, 0, 0.3),
+          0 0 15px rgba(139, 92, 246, 0.2);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--primary-gradient);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .icon-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+      }
+
+      .card h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+      }
+
+      .level-badge {
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+
+      /* Specific Colors per Card */
+      .card-1 .icon-box {
+        color: var(--accent-cyan);
+        box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+      }
+      .card-1::before {
+        background: var(--accent-cyan);
+      }
+
+      .card-2 .icon-box {
+        color: var(--accent-purple);
+        box-shadow: 0 0 15px rgba(168, 85, 247, 0.2);
+      }
+      .card-2::before {
+        background: var(--accent-purple);
+      }
+
+      .card-3 .icon-box {
+        color: var(--accent-pink);
+        box-shadow: 0 0 15px rgba(236, 72, 153, 0.2);
+      }
+      .card-3::before {
+        background: linear-gradient(90deg, #ec4899, #f59e0b);
+      }
+
+      /* List Styling */
+      ul {
+        list-style: none;
+      }
+
+      li {
+        margin-bottom: 15px;
+        padding-right: 20px;
+        position: relative;
+        font-size: 0.95rem;
+        color: #cbd5e1;
+      }
+
+      li strong {
+        color: white;
+        display: block;
+        margin-bottom: 4px;
+        font-weight: 600;
+      }
+
+      li::before {
+        content: '\f058'; /* fa-check-circle */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        right: 0;
+        top: 2px;
+        font-size: 0.9rem;
+      }
+
+      .card-1 li::before {
+        color: var(--accent-cyan);
+      }
+      .card-2 li::before {
+        color: var(--accent-purple);
+      }
+      .card-3 li::before {
+        color: var(--accent-pink);
+      }
+
+      /* Animations */
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 50px;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        opacity: 0.6;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        .container {
+          padding: 0 10px;
+        }
+      }
+    </style>
+  </head>
+  <body style="">
+    <div class="container">
+      <header>
+        <div style="font-size: 3rem; margin-bottom: 10px; color: var(--accent-cyan)">
+          <i class="fa-solid fa-robot fa-bounce" style="--fa-animation-duration: 3s">
+            <img src="https://page.gensparksite.com/get_upload_url/ee44702ac5df05515e2a94422148305d3d28703e3cbc555223a7a844b70bad0c/default/ab3fce3d-c9f3-4a28-8fae-afbc0829d989" alt="Uploaded Image" style="max-width: 100%; height: 75.1103px; display: block; width: 184.083px" data-height-listener-added="true">
+          </i>
+        </div>
+        <h1>פשוט AI -מתיאוריה לפרקטיקה&nbsp;</h1>
+        <div class="subtitle">מסע אל עתיד הטכנולוגיה והיצירה הדיגיטלית</div>
+      </header>
+
+      <div class="syllabus-grid">
+        <!-- Part 1: Beginners -->
+        <article class="card card-1 delay-1">
+          <div class="card-header">
+            <div class="icon-box">
+              <i class="fa-solid fa-seedling"></i>
+            </div>
+            <div>
+              <h2>קורס מתחילים</h2>
+              <span class="level-badge">רמת מתחילים</span>
+            </div>
+          </div>
+          <ul>
+            <li>
+              <strong>הכרת הממשק</strong>
+              הכרת סביבת העבודה של ChatGPT ו-Gemini, פונקציות בסיסיות, יצירת פרופיל וניהול זיכרון היסטוריית שיחות.
+            </li>
+            <li>
+              <strong>יסודות הנדסת פרומפטים</strong>
+              מיומנות הליבה: ניסוח בקשות (Prompts) ברורות ויעילות למשימות מורכבות לשיפור דיוק התוצרים.
+            </li>
+            <li>
+              <strong>שימושים יומיומיים</strong>
+              יישום פרקטי ושילוב AI במשימות שגרה בחיים האישיים ובעולם התעסוקה.
+            </li>
+          </ul>
+          <div style="
+              margin-top: 20px;
+              padding: 12px 20px;
+              background: rgba(6, 182, 212, 0.15);
+              border-radius: 10px;
+              text-align: center;
+              border: 1px solid rgba(6, 182, 212, 0.3);
+            ">
+            <i class="fa-solid fa-tag" style="color: var(--accent-cyan); margin-left: 8px"></i>
+            <strong style="color: white; font-size: 1.1rem">עלות: 400 ₪</strong>
+            <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 5px;">לשני המפגשים</div>
+          </div>
+        </article>
+
+        <!-- Part 4: Canva (Moved up, as per instruction to remove parts 2 & 3) -->
+        <article class="card card-3 delay-3">
+          <div class="card-header">
+            <div class="icon-box">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <div>
+              <h2>סדנת Canva</h2>
+              <span class="level-badge">חד פעמי - למידה ותרגול</span>
+            </div>
+          </div>
+          <ul>
+            <li>
+              <strong>היכרות עם Canva והממשק</strong>
+              הכרת הפלטפורמה וכלי העבודה הבסיסיים.
+            </li>
+            <li>
+              <strong>עבודה עם תבניות</strong>
+              שימוש בתבניות מוכנות והתאמתן לצרכים אישיים.
+            </li>
+            <li>
+              <strong>עריכת טקסטים בעיצוב</strong>
+              הוספה ועיצוב של טקסטים בצורה מקצועית.
+            </li>
+            <li>
+              <strong>שימוש בתמונות ואלמנטים</strong>
+              הוספת תמונות, אייקונים ואלמנטים גרפיים.
+            </li>
+            <li>
+              <strong>כלי עיצוב בסיסיים</strong>
+              שימוש בצבעים, צורות ואפקטים.
+            </li>
+            <li>
+              <strong>הורדה ושיתוף עיצובים</strong>
+              שמירה ושיתוף העבודות בפורמטים שונים.
+            </li>
+          </ul>
+          <div style="
+              margin-top: 20px;
+              padding: 12px 20px;
+              background: rgba(236, 72, 153, 0.15);
+              border-radius: 10px;
+              text-align: center;
+              border: 1px solid rgba(236, 72, 153, 0.3);
+            ">
+            <span style="font-weight: normal"><i class="fa-solid fa-tag" style="color: var(--accent-pink); margin-left: 8px"></i></span>
+            <strong style="color: white; font-size: 1.1rem">עלות: 220 ₪</strong>
+            <div style="font-size: 0.85rem; color: #cbd5e1; margin-top: 5px;">מינימום 5 משתתפים לקבוצה</div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Course Schedule Section -->
+      <div style="
+          margin-top: 50px;
+          padding: 30px;
+          background: var(--card-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: var(--glass-border);
+          border-radius: 20px;
+          border-top: 4px solid var(--accent-cyan);
+          text-align: center;
+        ">
+        <h2 style="
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+          ">
+          <i class="fa-solid fa-calendar-days" style="color: var(--accent-cyan)"></i>
+          מועדי הקורסים
+        </h2>
+
+        <div style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+          ">
+          <!-- Course 1: Beginners -->
+          <div style="
+              padding: 20px;
+              background: rgba(6, 182, 212, 0.1);
+              border-radius: 15px;
+              border: 1px solid rgba(6, 182, 212, 0.3);
+            ">
+            <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 15px">
+              <i class="fa-solid fa-seedling"></i> קורס מתחילים
+            </div>
+            <div style="color: white; font-size: 1.1rem; margin-bottom: 8px">8.3.26 • 11.3.26</div>
+            <div style="color: #94a3b8; font-size: 0.95rem">
+              <i class="fa-solid fa-calendar-week" style="color: var(--accent-cyan); margin-left: 5px"></i>
+              ימים ראשון ורביעי
+            </div>
+            <div style="color: #94a3b8; font-size: 0.95rem; margin-top: 5px;">
+              <i class="fa-solid fa-clock" style="color: var(--accent-cyan); margin-left: 5px"></i>
+              9:00 - 12:00
+            </div>
+            <div style="
+                margin-top: 10px;
+                padding: 8px 12px;
+                background: rgba(6, 182, 212, 0.15);
+                border-radius: 8px;
+                font-size: 0.85rem;
+                color: #cbd5e1;
+              ">
+              <i class="fa-solid fa-video" style="color: var(--accent-cyan); margin-left: 5px"></i>
+              קורס נוסף בזום לרמה זו, יפתח על פי דרישה (פרטים בטופס רישום)
+            </div>
+          </div>
+
+          <!-- Course 4: Canva (Moved up, removed 2 & 3) -->
+          <div style="
+              padding: 20px;
+              background: rgba(236, 72, 153, 0.1);
+              border-radius: 15px;
+              border: 1px solid rgba(236, 72, 153, 0.3);
+            ">
+            <div style="font-size: 1.3rem; font-weight: 700; color: var(--accent-pink); margin-bottom: 15px">
+              <i class="fa-solid fa-palette"></i> סדנת קנבה
+            </div>
+            <div style="color: white; font-size: 1.1rem; margin-bottom: 8px">10.3.26</div>
+            <div style="color: #94a3b8; font-size: 0.95rem">
+              <i class="fa-solid fa-calendar-week" style="color: var(--accent-pink); margin-left: 5px"></i>
+              יום שלישי
+            </div>
+            <div style="color: #94a3b8; font-size: 0.95rem; margin-top: 5px;">
+              <i class="fa-solid fa-clock" style="color: var(--accent-pink); margin-left: 5px"></i>
+              9:00 - 12:00
+            </div>
+            <div style="
+                margin-top: 10px;
+                padding: 8px 12px;
+                background: rgba(236, 72, 153, 0.1);
+                border-radius: 8px;
+                font-size: 0.85rem;
+                color: #fde047;
+                font-weight: 600;
+              ">
+              <i class="fa-solid fa-star" style="color: #fde047; margin-left: 5px"></i>
+              מתחילים מהצעד הראשון - למידה ותרגול!
+            </div>
+          </div>
+        </div>
+
+        <!-- Cost -->
+        <div style="
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 15px;
+          ">
+          <div style="margin-bottom: 10px;">
+            <i class="fa-solid fa-tag" style="color: var(--accent-cyan); margin-left: 10px"></i>
+            <span style="color: white; font-size: 1.1rem; font-weight: 600">קורס מתחילים: 400 ₪</span>
+            <span style="color: #94a3b8; font-size: 0.9rem; margin-right: 10px;">(לשני המפגשים)</span>
+          </div>
+          <div>
+            <i class="fa-solid fa-tag" style="color: var(--accent-pink); margin-left: 10px"></i>
+            <span style="color: white; font-size: 1.1rem; font-weight: 600">סדנת קנבה: 220 ₪</span>
+            <span style="color: #94a3b8; font-size: 0.9rem; margin-right: 10px;">(מינימום 5 משתתפים)</span>
+          </div>
+        </div>
+
+        <!-- Practical Learning Note -->
+        <div style="
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(6, 182, 212, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(6, 182, 212, 0.2);
+          ">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px">
+            <i class="fa-solid fa-hands-clapping" style="color: var(--accent-cyan); font-size: 1.3rem"></i>
+            <h3 style="color: white; font-size: 1.2rem; margin: 0">למידה מעשית ואינטראקטיבית</h3>
+          </div>
+          <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.8; text-align: center; margin: 0">
+            כל הקורסים משלבים <strong style="color: white">הדרכה והסבר תיאורטי</strong> עם
+            <strong style="color: var(--accent-cyan)">תרגול מעשי של הלומדים</strong> - כך שתוכלו ליישם את הידע מיד בזמן
+            אמת!
+          </p>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div style="
+          margin-top: 40px;
+          padding: 30px;
+          background: var(--card-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: var(--glass-border);
+          border-radius: 20px;
+          border-top: 4px solid var(--accent-purple);
+        ">
+        <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap">
+          <img src="https://page.gensparksite.com/get_upload_url/ee44702ac5df05515e2a94422148305d3d28703e3cbc555223a7a844b70bad0c/default/dc4c2528-3051-4c89-bccb-e0ff435772ce" alt="אדוה הרי פרלצוויג" style="
+              width: 200px;
+              height: 200px;
+              border-radius: 15px;
+              object-fit: cover;
+              border: 3px solid rgba(168, 85, 247, 0.3);
+              box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+            " data-height-listener-added="true">
+          <div style="flex: 1; min-width: 250px">
+            <h3 style="font-size: 1.8rem; color: white; margin-bottom: 15px">היי! 👋</h3>
+            <p style="color: #cbd5e1; font-size: 1.05rem; line-height: 1.8">
+              שמי <strong style="color: var(--accent-purple)">אדוה הרי פרלצוויג</strong> ואני מנגישה טכנולוגית במיקוד
+              כלי AI. אני מלווה עסקים ומשתמשים פרטיים בתהליך למידה והטמעה של כלי AI מתקדמים, משלב ההיכרות ועד ליישום
+              מעשי שמייצר תוצאות. אני מתמחה בהדרכה חווייתית וברורה על שימוש יעיל בבינה מלאכותית לשיפור תהליכים, חיסכון
+              בזמן, ושדרוג העבודה השוטפת. במטרה להפוך את הטכנולוגיה לנגישה ופשוטה, ללא צורך בידע טכנולוגי מוקדם.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <div style="
+          margin-top: 40px;
+          padding: 30px;
+          background: var(--card-bg);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: var(--glass-border);
+          border-radius: 20px;
+          border-top: 4px solid var(--accent-cyan);
+          text-align: center;
+        ">
+        <h2 style="
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+          ">
+          <i class="fa-solid fa-paper-plane" style="color: var(--accent-cyan)"></i>
+          לפרטים והרשמה
+        </h2>
+
+        <div style="
+            display: inline-block;
+            padding: 20px 40px;
+            background: rgba(37, 211, 102, 0.1);
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+          ">
+          <a href="https://wa.me/972542900454" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 15px; color: white">
+            <i class="fa-brands fa-whatsapp" style="font-size: 2.5rem; color: #25d366"></i>
+            <div style="text-align: right">
+              <div style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 5px">נא לשלוח וואטסאפ עם שם מלא למספר</div>
+              <div style="font-size: 1.4rem; font-weight: 700; color: white; direction: ltr">054-2900454</div>
+              <div style="font-size: 0.9rem; color: #cbd5e1; margin-top: 5px">ואני אצור איתכם קשר במיידי</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer" style="margin-top: 40px">
+        <p style="color: var(--text-secondary); font-size: 0.9rem">
+          <i class="fa-solid fa-sparkles" style="color: var(--accent-cyan)"></i>
+          מסע מרתק אל עולם הבינה המלאכותית
+        </p>
+      </div>
+    </div>
+  
+
+</body></html>
